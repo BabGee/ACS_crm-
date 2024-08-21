@@ -61,14 +61,16 @@ def api_call(data):
                 "Sn": record['serial_number'],
             },
             "UserInfo": {
-                "LoginName": record['username'],
-                "FullName": record['customer_name'],
-                #"Telephone": record['phone'],  
-                "UserId": record['customer_id'],
-                #"Location": record['location'],  
-                "UserTag": record['olt'],   
+                "LoginName": record['account_no'],
+                "Name": record['customer_name'],
+                "Telephone": record['phone'],  
+                "Location": record['location'],  
+                "Tag": record['olt'], 
+                "Id":record['sub_number'],  
                 "Cust1": record['username'], 
-                "Cust2": record['password']  
+                "Cust2": record['password'],  
+                #"Cust7": record['address'], 
+                "Cust8": record['email'],                 
             },
             "Parameters": [
                     # {
