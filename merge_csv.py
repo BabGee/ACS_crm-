@@ -26,6 +26,33 @@ deduplicated_df.to_csv('data/subscriptions_with_phone_numbers_deduplicated.csv',
 print("Duplicates removed and CSV saved successfully.")
 
 
+# Load the deduplicated CSV file
+deduplicated_df = pd.read_csv('data/subscriptions_with_phone_numbers_deduplicated.csv')
+
+# Define a function to clean and normalize phone numbers
+def clean_phone_number(phone):
+    if pd.isna(phone):
+        return ''
+    
+    # Convert phone to string in case it's not
+    phone = str(phone)
+    
+    # Remove any non-numeric characters
+    phone = ''.join(filter(str.isdigit, phone))
+    
+    # Remove the country code '254' if it exists
+    if phone.startswith('254'):
+        phone = '0' + phone[3:]
+    
+    return phone
+
+# Apply the cleaning function to the 'Phone' column
+deduplicated_df['Phone'] = deduplicated_df['Phone'].apply(clean_phone_number)
+
+# Save the cleaned DataFrame back to a CSV file
+deduplicated_df.to_csv('data/subscriptions_with_phone_numbers_cleaned.csv', index=False)
+
+print("Phone numbers cleaned and CSV saved successfully.")
 
 
 # TDTC-3542F0C0
