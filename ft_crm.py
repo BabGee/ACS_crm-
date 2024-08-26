@@ -14,7 +14,7 @@ def FT_update_userinfo(data):
             },
             "UserInfo": {
                 "LoginName": record['plan_name'],
-                "Name": record['name'],
+                "FullName": record['name'],
                 "Telephone": record['phone'],  
                 "Location": record['sub_id'],  
                 "UserTag": record['olt'], 
